@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>لوحة التحكم | الريان</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="dash">
+    <aside class="sidebar">
+      <a href="index.html" class="sidebar-brand">
+        <div class="brand-logo" data-brand-letter>ر</div>
+        <div class="brand-text">
+          <span class="brand-name" data-i18n="brand"></span>
+          <span class="brand-sub" data-i18n="admin.dashboard"></span>
+        </div>
+      </a>
+      <nav>
+        <button class="side-item active" data-tab="products">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+          <span data-i18n="admin.products"></span>
+        </button>
+        <button class="side-item" data-tab="banners">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span data-i18n="admin.banners"></span>
+        </button>
+        <button class="side-item" data-tab="orders">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
+          <span data-i18n="admin.orders"></span> <span id="orders-count-badge" style="color: var(--color-gold); font-size: 11px;"></span>
+        </button>
+      </nav>
+      <div class="sidebar-foot">
+        <div class="sidebar-user" id="sidebar-user">admin</div>
+        <button class="side-item" id="logout-btn" style="border-inline-start: 0;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          <span data-i18n="admin.logout"></span>
+        </button>
+      </div>
+    </aside>
+
+    <main class="dash-main">
+      <header class="dash-header">
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <h1 class="dash-title" id="dash-title"></h1>
+          <div class="tabs-mobile">
+            <button class="tab-icon active" data-tab="products" aria-label="products">📦</button>
+            <button class="tab-icon" data-tab="banners" aria-label="banners">🖼</button>
+            <button class="tab-icon" data-tab="orders" aria-label="orders">📋</button>
+          </div>
+        </div>
+        <button class="lang-btn" id="lang-toggle" style="display:inline-flex"></button>
+      </header>
+
+      <div class="dash-content">
+        <!-- Products tab -->
+        <section data-pane="products">
+          <div class="toolbar">
+            <div class="search-mini">
+              <span class="icon-search"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+              <input type="text" id="product-search" />
+            </div>
+            <button class="btn" id="add-product-btn">+ <span data-i18n="admin.add_product"></span></button>
+          </div>
+          <div class="table-wrap" id="products-table-wrap"></div>
+        </section>
+
+        <!-- Banners tab -->
+        <section data-pane="banners" style="display:none">
+          <div class="toolbar" style="justify-content: flex-end;">
+            <button class="btn" id="add-banner-btn">+ <span data-i18n="admin.add_banner"></span></button>
+          </div>
+          <div class="banner-card-grid" id="banners-grid"></div>
+        </section>
+
+        <!-- Orders tab -->
+        <section data-pane="orders" style="display:none">
+          <div class="stat-grid" id="orders-stats"></div>
+          <div class="table-wrap" id="orders-table-wrap"></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal Drawer for forms -->
+  <div class="overlay" id="modal-overlay"></div>
+  <aside class="drawer" id="modal-drawer" style="max-width: 640px;">
+    <div class="drawer-head">
+      <h3 class="drawer-title" id="modal-title">—</h3>
+      <button class="drawer-close" id="modal-close">✕</button>
+    </div>
+    <div class="drawer-body" id="modal-body"></div>
+  </aside>
+
+  <script src="js/config.js"></script>
+  <script src="js/lang.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
